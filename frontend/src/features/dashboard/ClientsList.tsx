@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Users, Search, Filter, Loader2, FileText, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -27,7 +27,7 @@ export default function ClientsList() {
         if (!token) return;
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:8000/api/v1/clients/', {
+            const response = await axios.get(`${API_BASE_URL}/api/v1/clients/`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AlertCircle, ArrowUpRight, Clock, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
+import { API_BASE_URL } from '../../config/api';
 
 type DashboardData = {
     stats: {
@@ -38,7 +39,7 @@ export default function PsychologistDashboard() {
             if (!token) return;
 
             try {
-                const response = await axios.get('http://localhost:8000/api/v1/dashboard/overview', {
+                const response = await axios.get(`${API_BASE_URL}/api/v1/dashboard/overview`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
+import { API_BASE_URL } from '../../config/api';
 import { Loader2, Send, Clock, User } from 'lucide-react';
 
 interface ClinicalNote {
@@ -20,7 +21,7 @@ export const ClinicalNotesTab = ({ clientId }: { clientId: string }) => {
     const fetchNotes = async () => {
         if (!token || !clientId) return;
         try {
-            const res = await axios.get(`http://localhost:8000/api/v1/clients/${clientId}/notes`, {
+            const res = await axios.get(`${API_BASE_URL}/api/v1/clients/${clientId}/notes`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setNotes(res.data);
@@ -39,7 +40,7 @@ export const ClinicalNotesTab = ({ clientId }: { clientId: string }) => {
         if (!newNote.trim() || !token) return;
         setSaving(true);
         try {
-            await axios.post(`http://localhost:8000/api/v1/clients/${clientId}/notes`, { content: newNote }, {
+            await axios.post(`${API_BASE_URL}/api/v1/clients/${clientId}/notes`, { content: newNote }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setNewNote('');

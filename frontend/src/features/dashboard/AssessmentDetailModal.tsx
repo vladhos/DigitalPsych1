@@ -21,7 +21,7 @@ export default function AssessmentDetailModal({
             if (!token || !assignmentId || !isOpen) return;
             setLoading(true);
             try {
-                const res = await axios.get(`http://localhost:8000/api/v1/assignments/${assignmentId}/detail`, {
+                const res = await axios.get(`${API_BASE_URL}/api/v1/assignments/${assignmentId}/detail`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setDetail(res.data);

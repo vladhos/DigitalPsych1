@@ -50,11 +50,11 @@ export default function ClientProfile() {
         try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
             // Fetch basic client info
-            const clientRes = await axios.get(`http://localhost:8000/api/v1/clients/${id}`, config);
+            const clientRes = await axios.get(`${API_BASE_URL}/api/v1/clients/${id}`, config);
             setClient(clientRes.data);
 
             // Fetch full assessment history
-            const assignmentsRes = await axios.get(`http://localhost:8000/api/v1/clients/${id}/assignments`, config);
+            const assignmentsRes = await axios.get(`${API_BASE_URL}/api/v1/clients/${id}/assignments`, config);
             const history = assignmentsRes.data;
             setAssignments(history);
 
@@ -91,7 +91,7 @@ export default function ClientProfile() {
         if (!token) return;
         try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const res = await axios.get('http://localhost:8000/api/v1/available_templates', config);
+            const res = await axios.get(`${API_BASE_URL}/api/v1/available_templates`, config);
             setAvailableTemplates(res.data);
             if (res.data.length > 0) {
                 setSelectedTemplateId(res.data[0].version_id); // default select first
@@ -116,7 +116,7 @@ export default function ClientProfile() {
         setAssignMessage(null);
         try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const res = await axios.post(`http://localhost:8000/api/v1/assignments?client_id=${id}&version_id=${selectedTemplateId}`, {}, config);
+            const res = await axios.post(`${API_BASE_URL}/api/v1/assignments?client_id=${id}&version_id=${selectedTemplateId}`, {}, config);
 
             setAssignMessage({ type: 'success', text: `Assessment assigned! ID: ${res.data.assignment_id}` });
             fetchProfileData(); // refresh history
@@ -134,7 +134,7 @@ export default function ClientProfile() {
         setDeleting(true);
         try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            await axios.delete(`http://localhost:8000/api/v1/clients/${id}`, config);
+            await axios.delete(`${API_BASE_URL}/api/v1/clients/${id}`, config);
             navigate('/clients');
         } catch (error) {
             console.error("Failed to delete client", error);

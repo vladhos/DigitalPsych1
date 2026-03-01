@@ -32,7 +32,7 @@ export default function AddClientModal({
         setLoading(true);
 
         try {
-            await axios.post('http://localhost:8000/api/v1/clients/', formData, {
+            await axios.post(`${API_BASE_URL}/api/v1/clients/`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
