@@ -24,7 +24,7 @@ export const Login: React.FC = () => {
             params.append('username', email);
             params.append('password', password);
 
-            const response = await axios.post('http://localhost:8000/api/v1/auth/login/access-token', params, {
+            const response = await axios.post(`${API_BASE_URL}/api/v1/auth/login/access-token`, params, {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
