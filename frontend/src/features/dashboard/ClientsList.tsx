@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 import AddClientModal from './AddClientModal';
+import { API_BASE_URL } from '../../config/api';
 
 type ClientItem = {
     id: string;

@@ -6,6 +6,7 @@ import { ArrowLeft, Download, FileText, Activity, AlertTriangle, Loader2, Trash2
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { ClinicalNotesTab } from './ClinicalNotesTab';
 import AssessmentDetailModal from './AssessmentDetailModal';
+import { API_BASE_URL } from '../../config/api';
 
 export default function ClientProfile() {
     const params = useParams();
