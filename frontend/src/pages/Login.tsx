@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, AlertCircle, Activity } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 export const Login: React.FC = () => {
     const [email, setEmail] = useState('');
