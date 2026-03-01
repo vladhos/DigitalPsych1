@@ -4,6 +4,7 @@ import { Step2Questions } from './Step2Questions';
 import { Step3Scoring } from './Step3Scoring';
 import { CheckCircle, Circle, Dot } from 'lucide-react';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 
 interface AssessmentBuilderProps {
     onSuccess: () => void;
@@ -79,7 +80,7 @@ export const AssessmentBuilder: React.FC<AssessmentBuilderProps> = ({ onSuccess 
 
         try {
             const token = localStorage.getItem('access_token');
-            await axios.post('http://localhost:8000/api/v1/admin/templates/import', payload, {
+            await axios.post(`${API_BASE_URL}/api/v1/admin/templates/import`, payload, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setDraft(INITIAL_DRAFT);
@@ -165,6 +166,7 @@ export const AssessmentBuilder: React.FC<AssessmentBuilderProps> = ({ onSuccess 
                         updateDraft={updateDraft}
                         onBack={handleBack}
                         onSave={handleSave}
+                        isSaving={false}
                     />
                 )}
             </div>
