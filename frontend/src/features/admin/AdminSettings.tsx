@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Save, AlertCircle, Upload, CheckCircle2, Play, BookOpen, Trash2, PencilRuler } from 'lucide-react';
 import { AssessmentBuilder } from './builder/AssessmentBuilder';
+import { API_BASE_URL } from '../../config/api';
 
 export default function AdminSettings() {
     const [jsonInput, setJsonInput] = useState<string>(`{
