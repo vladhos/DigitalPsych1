@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Loader2, CheckCircle, ChevronRight } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { API_BASE_URL } from '../../config/api';
 
 type AssessmentItem = {
     id: string;
