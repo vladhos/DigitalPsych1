@@ -132,7 +132,7 @@ export default function AdminSettings() {
 
         try {
             const token = localStorage.getItem('access_token');
-            await axios.post('http://localhost:8000/api/v1/admin/templates/import', parsedData, {
+            await axios.post(`${API_BASE_URL}/api/v1/admin/templates/import`, parsedData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setSuccess(`Template imported successfully!`);
@@ -157,7 +157,7 @@ export default function AdminSettings() {
         setLibraryLoading(true);
         try {
             const token = localStorage.getItem('access_token');
-            const res = await axios.get('http://localhost:8000/api/v1/admin/templates', {
+            const res = await axios.get(`${API_BASE_URL}/api/v1/admin/templates`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setTemplateLibrary(res.data);
@@ -172,7 +172,7 @@ export default function AdminSettings() {
         if (!window.confirm(`Naozaj chcete vymazať šablónu "${name}"? Táto akcia je nevratná.`)) return;
         try {
             const token = localStorage.getItem('access_token');
-            await axios.delete(`http://localhost:8000/api/v1/admin/templates/${templateId}`, {
+            await axios.delete(`${API_BASE_URL}/api/v1/admin/templates/${templateId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setDeleteSuccess(`Šablóna "${name}" bola vymazaná.`);
