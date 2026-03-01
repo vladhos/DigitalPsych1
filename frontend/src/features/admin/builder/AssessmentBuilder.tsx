@@ -4,7 +4,7 @@ import { Step2Questions } from './Step2Questions';
 import { Step3Scoring } from './Step3Scoring';
 import { CheckCircle, Circle, Dot } from 'lucide-react';
 import axios from 'axios';
-import { API_BASE_URL } from '../../config/api';
+import { API_BASE_URL } from '../../../config/api';
 
 interface AssessmentBuilderProps {
     onSuccess: () => void;
