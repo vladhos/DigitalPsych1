@@ -32,7 +32,7 @@ export default function AssessmentForm() {
             if (!assignmentId || !token) return;
             try {
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const res = await axios.get(`http://localhost:8000/api/v1/assignments/${assignmentId}`, config);
+                const res = await axios.get(`${API_BASE_URL}/api/v1/assignments/${assignmentId}`, config);
                 setAssignmentDetail(res.data);
 
                 // Ak uz to bolo vyplnene minule (status je completed)
@@ -69,7 +69,7 @@ export default function AssessmentForm() {
         setSubmitting(true);
         try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            await axios.post(`http://localhost:8000/api/v1/assignments/${assignmentDetail.assignment_id}/submit`, {
+            await axios.post(`${API_BASE_URL}/api/v1/assignments/${assignmentDetail.assignment_id}/submit`, {
                 assignment_id: assignmentDetail.assignment_id,
                 answers: answers
             }, config);
